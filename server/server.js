@@ -1,5 +1,4 @@
 const { ObjectID } = require('mongodb');
-const express = require('express');
 const bodyParser = require('body-parser');
 
 const Todo = require('./../models/todo');
@@ -10,6 +9,7 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 
 app.post('/todos', (req, res) => {
+    const express = require('express');
     var todo = new Todo({
         text: req.body.text
     });
@@ -46,3 +46,5 @@ app.get('/todos/:id', (req, res) => {
 app.listen(port, () => {
     console.log(`Server is up on port ${port}`);
 });
+
+module.exports = { app };
